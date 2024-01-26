@@ -50,15 +50,15 @@ public class FrontControllerServletV5 extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Object handler = getHandler(request);
+        Object handler = getHandler(request);//요청온 uri와 맞는 핸들러찾기
 
         if(handler == null){
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 
-        MyHandlerAdapter adapter = getHandlerAdapter(handler);
-        ModelView mv = adapter.handle(request, response, handler);
+        MyHandlerAdapter adapter = getHandlerAdapter(handler);//그 핸들러를 다루기위한 어댑터찾기
+        ModelView mv = adapter.handle(request, response, handler);//어댑터로 핸들러사용 후 뷰객체반환받기
 
         String viewName =  mv.getViewName();//논리이름
         MyView view = viewResolver(viewName);

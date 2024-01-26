@@ -12,3 +12,7 @@ public class SpringMemberFormControllerV1 {
         return new ModelAndView("new-form");
     }
 }
+
+
+// @RequestMapping이게 있으면 RequestMappingHandlerMapping, RequestMappingHandlerAdapter가
+//사용되는셈
